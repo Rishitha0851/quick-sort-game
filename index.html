@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
     <title>Quick Sort Visualizer</title>
 
@@ -10,31 +16,39 @@
 
 <body>
 
-    <h1>Quick Sort Visualizer</h1>
+    <div class="container">
 
-    <div class="controls">
+        <h1>Quick Sort Visualizer</h1>
 
-        <button onclick="generateArray()">
-            Generate Array
-        </button>
+        <p class="subtitle">
+            Enter your own array and watch Quick Sort animation
+        </p>
 
-        <button onclick="quickSortStart()">
-            Start Quick Sort
-        </button>
+        <div class="input-section">
+
+            <input
+            type="text"
+            id="array-input"
+            placeholder="Example: 45,12,78,23,9">
+
+            <button onclick="createArray()">
+                Generate Bars
+            </button>
+
+            <button onclick="quickSortStart()">
+                Start Sorting
+            </button>
+
+        </div>
+
+        <div id="array-container"></div>
+
+        <div id="status"></div>
 
     </div>
-
-    <p class="tagline">
-        ⚡ Experience Real-Time Quick Sort Visualization ⚡
-    </p>
-
-    <div id="array-container"></div>
-
-    <footer>
-        Made with ❤️ using HTML, CSS & JavaScript
-    </footer>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
