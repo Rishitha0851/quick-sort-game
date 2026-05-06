@@ -1,20 +1,23 @@
 let arr = [];
 
-function generateArray(){
+function createArray(){
 
-    arr = [];
+    const input =
+    document.getElementById("array-input").value;
+
+    arr = input.split(",").map(Number);
+
+    displayBars();
+}
+
+function displayBars(){
 
     const container =
     document.getElementById("array-container");
 
     container.innerHTML = "";
 
-    for(let i=0;i<12;i++){
-
-        let value =
-        Math.floor(Math.random()*100)+10;
-
-        arr.push(value);
+    arr.forEach(value => {
 
         const bar =
         document.createElement("div");
@@ -27,45 +30,55 @@ function generateArray(){
         bar.innerHTML = value;
 
         container.appendChild(bar);
-    }
+    });
 }
 
 async function quickSortStart(){
 
-    await quickSort(arr,0,arr.length-1);
+    if(arr.length === 0){
+
+        alert("Please enter array!");
+
+        return;
+    }
+
+    await quickSort(0,arr.length-1);
+
+    document.getElementById("status").innerHTML =
+    "Array Sorted Successfully!";
 }
 
-async function quickSort(arr,low,high){
+async function quickSort(low,high){
 
     if(low < high){
 
         let pi =
-        await partition(arr,low,high);
+        await partition(low,high);
 
-        await quickSort(arr,low,pi-1);
+        await quickSort(low,pi-1);
 
-        await quickSort(arr,pi+1,high);
+        await quickSort(pi+1,high);
     }
 }
 
-async function partition(arr,low,high){
-
-    let pivot = arr[high];
+async function partition(low,high){
 
     const bars =
     document.getElementsByClassName("bar");
 
+    let pivot = arr[high];
+
     bars[high].style.background =
-    "linear-gradient(to top,#ff512f,#dd2476)";
+    "linear-gradient(to top,#facc15,#fde68a)";
 
     let i = low - 1;
 
     for(let j=low;j<high;j++){
 
         bars[j].style.background =
-        "linear-gradient(to top,#f7971e,#ffd200)";
+        "linear-gradient(to top,#38bdf8,#2563eb)";
 
-        await sleep(500);
+        await sleep(600);
 
         if(arr[j] < pivot){
 
@@ -74,27 +87,30 @@ async function partition(arr,low,high){
             [arr[i],arr[j]] =
             [arr[j],arr[i]];
 
-            updateBars(bars);
+            updateBars();
 
-            await sleep(500);
+            await sleep(600);
         }
 
         bars[j].style.background =
-        "linear-gradient(to top,#00f260,#0575e6)";
+        "linear-gradient(to top,#2563eb,#60a5fa)";
     }
 
     [arr[i+1],arr[high]] =
     [arr[high],arr[i+1]];
 
-    updateBars(bars);
+    updateBars();
 
     bars[i+1].style.background =
-    "linear-gradient(to top,#00ff87,#60efff)";
+    "linear-gradient(to top,#facc15,#fde68a)";
 
     return i + 1;
 }
 
-function updateBars(bars){
+function updateBars(){
+
+    const bars =
+    document.getElementsByClassName("bar");
 
     for(let i=0;i<arr.length;i++){
 
@@ -111,5 +127,3 @@ function sleep(ms){
     return new Promise(resolve =>
     setTimeout(resolve,ms));
 }
-
-generateArray();
