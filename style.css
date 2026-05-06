@@ -1,54 +1,142 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+*{
     margin:0;
     padding:0;
-    text-align:center;
-    font-family:Arial;
-    background:linear-gradient(135deg,#141e30,#243b55);
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1a2980);
+    background-size:400% 400%;
+    animation:bgAnimation 10s ease infinite;
     color:white;
+    text-align:center;
+}
+
+@keyframes bgAnimation{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
 }
 
 h1{
-    margin-top:20px;
-    font-size:42px;
+    margin-top:25px;
+    font-size:55px;
+    font-weight:700;
+    text-shadow:0 0 20px cyan;
 }
 
 .controls{
-    margin-top:20px;
+    margin-top:30px;
 }
 
 button{
-    padding:12px 25px;
+
+    padding:14px 28px;
     margin:15px;
     border:none;
-    border-radius:8px;
-    background:#ff9800;
-    color:white;
-    font-size:16px;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
+    color:white;
+
+    background:rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan;
+
+    transition:0.4s;
 }
 
 button:hover{
-    background:#ff5722;
-    transform:scale(1.05);
+
+    transform:translateY(-5px) scale(1.05);
+
+    background:linear-gradient(45deg,#ff00cc,#3333ff);
+
+    box-shadow:
+    0 0 20px #ff00cc,
+    0 0 40px #3333ff;
+}
+
+.tagline{
+    margin-top:10px;
+    font-size:20px;
+    color:#ddd;
 }
 
 #array-container{
+
     display:flex;
     justify-content:center;
     align-items:flex-end;
-    height:450px;
-    margin-top:40px;
+
+    height:500px;
+
+    margin-top:50px;
+
+    padding:20px;
 }
 
 .bar{
-    width:40px;
-    margin:4px;
-    background:cyan;
-    border-radius:6px 6px 0 0;
-    color:black;
+
+    width:45px;
+
+    margin:5px;
+
+    border-radius:12px 12px 0 0;
+
+    background:linear-gradient(to top,#00f260,#0575e6);
+
+    color:white;
+
     font-weight:bold;
+
     display:flex;
+
     justify-content:center;
+
     align-items:flex-end;
+
+    padding-bottom:10px;
+
+    box-shadow:
+    0 0 10px #00f260,
+    0 0 20px #0575e6;
+
+    transition:0.4s;
+}
+
+.bar:hover{
+    transform:scale(1.08);
+}
+
+footer{
+
+    position:absolute;
+
+    bottom:10px;
+
+    width:100%;
+
+    font-size:14px;
+
+    color:#ddd;
 }
